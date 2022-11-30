@@ -5,6 +5,8 @@ const _ = require("lodash");
 const { v4: uuid } = require("uuid");
 
 const app = express();
+
+app.use(express.json());
   
 app.get("/outfit", (req, res) => {
   const shirts = ["Navy", "Black", "White", "Green"];
@@ -17,6 +19,15 @@ app.get("/outfit", (req, res) => {
     shoes: _.sample(shoes)
   });
 })
+
+app.post("/comments", (req, res) => {
+  const id = uuid();
+  const content = req.body.content;
+
+
+
+  res.sendStatus(201);
+});
 
 app.listen(3000, () => console.log("API Server is running..."));
 
