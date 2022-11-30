@@ -8,5 +8,6 @@ This should help me pick my clothes in the morning since I have no idea how to d
 
 
 
-// Depenencies //
+// Tools & Depenencies //
+Insomnia - for testing
 nodemon - for autostarting server
