@@ -20,13 +20,20 @@ app.get("/outfit", (req, res) => {
   });
 })
 
-app.post("/comments", (req, res) => {
+app.post("/comments", async (req, res) => {
   const id = uuid();
   const content = req.body.content;
 
+  if(!content) {
+    return res.sendStatus(400);
+  }
 
+  await fs.mkdir("data/horrible_comments", {recursive: true});
+  await fs.writeFile(`data/horrible_comments/${id}.txt`, content);
 
-  res.sendStatus(201);
+  res.status(201).json({
+    id: id
+  });
 });
 
 app.listen(3000, () => console.log("API Server is running..."));
